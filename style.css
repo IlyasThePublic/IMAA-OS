@@ -1,14 +1,10 @@
-/* ==========================================================================
-   IMAA-OS Custom Styling Sheet
-   Aesthetics: Deep Space Dark Mode, Glassmorphic UI, Neon Accents, Fluid Layouts
-   ========================================================================== */
-
 /* Design Tokens & Variables */
 :root {
-  --bg-dark: #07090e;
-  --bg-primary: #0c0f17;
-  --bg-secondary: #121824;
-  --bg-tertiary: #192132;
+
+  --bg-dark: #050608;
+  --bg-primary: #0b0d12;
+  --bg-secondary: #111722;
+  --bg-tertiary: #1a2234;
   --bg-glass: rgba(18, 24, 36, 0.65);
   --border-glass: rgba(255, 255, 255, 0.07);
   
@@ -17,7 +13,7 @@
   --text-muted: #64748b;
   --text-white: #ffffff;
   
-  --primary: #3b82f6;
+  --primary: #3b82f6; 
   --primary-rgb: 59, 130, 246;
   --purple: #8b5cf6;
   --purple-rgb: 139, 92, 246;
@@ -33,6 +29,8 @@
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-premium: 0.7s var(--ease-premium);
   
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -64,6 +62,38 @@ body {
   color: var(--text-secondary);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(59,130,246,.08), transparent 35%),
+        radial-gradient(circle at 80% 15%, rgba(139,92,246,.08), transparent 35%),
+        radial-gradient(circle at 50% 90%, rgba(236,72,153,.05), transparent 40%);
+
+    opacity:.9;
+
+    transform:translateZ(0);
+    will-change:transform;
+
+    animation:ambientBackground 35s linear infinite;
+}
+
+@keyframes ambientBackground{
+
+    from{
+        transform:translate3d(0,0,0) scale(1);
+    }
+
+    to{
+        transform:translate3d(-3%,2%,0) scale(1.05);
+    }
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -111,8 +141,15 @@ img {
 /* Gradient Text Effect */
 .gradient-text {
   background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: gradient-drift 8s ease-in-out infinite;
+}
+@keyframes gradient-drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* Glow Background Orbs */
@@ -129,11 +166,50 @@ img {
 .glow-bg-1 {
   top: 10%;
   right: -100px;
+  animation: orb-drift-a 22s ease-in-out infinite;
 }
 .glow-bg-2 {
   top: 45%;
   left: -200px;
   background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, rgba(139, 92, 246, 0.04) 60%, rgba(0, 0, 0, 0) 80%);
+  animation: orb-drift-b 26s ease-in-out infinite;
+}
+.glow-bg-3 {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  top: 75%;
+  right: 8%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(236, 72, 153, 0.03) 55%, rgba(0, 0, 0, 0) 75%);
+  filter: blur(70px);
+  z-index: -10;
+  pointer-events: none;
+  animation: orb-drift-c 30s ease-in-out infinite;
+}
+
+@keyframes orb-drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+  50% { transform: translate(-40px, 50px) scale(1.08); opacity: 1; }
+}
+@keyframes orb-drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.85; }
+  50% { transform: translate(50px, -30px) scale(1.06); opacity: 1; }
+}
+@keyframes orb-drift-c {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  50% { transform: translate(-30px, -40px) scale(1.1); opacity: 0.95; }
+}
+
+/* Subtle ambient noise / film-grain layer for tactile depth */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Scrollbar Customization */
@@ -160,7 +236,23 @@ img {
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-glass);
-  transition: var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+  position: relative;
+  transform-style: preserve-3d;
+}
+/* Soft top-edge light + faint corner glow for glass refraction depth */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, rgba(139, 92, 246, 0.12) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.8;
 }
 
 /* Buttons */
@@ -173,15 +265,57 @@ img {
   font-size: 15px;
   font-weight: 600;
   border-radius: var(--radius-md);
-  transition: var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal), border-color var(--transition-normal), color var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  will-change: transform;
+}
+/* Light-sweep sheen that travels across the button on hover */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.35) 42%, rgba(255, 255, 255, 0.05) 52%, transparent 70%);
+  transform: translateX(-130%);
+  transition: transform 0.75s var(--ease-premium);
+  pointer-events: none;
+}
+.btn:hover::before {
+  transform: translateX(130%);
+}
+.btn > * {
+  position: relative;
+  z-index: 2;
+}
+/* Ripple element injected on click by script.js */
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(0);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 1;
+  animation: ripple-expand 0.65s var(--ease-premium) forwards;
+}
+@keyframes ripple-expand {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
 }
 .btn-primary {
   background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
   color: var(--text-white);
 }
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow-purple);
+  transform: translateY(-2px) scale(1.015);
+  box-shadow: var(--shadow-glow-purple), 0 14px 30px -10px rgba(139, 92, 246, 0.55);
+}
+.btn-primary:active {
+  transform: translate(var(--mx, 0), var(--my, 0)) translateY(-1px) scale(0.98);
 }
 .btn-secondary {
   background: rgba(255, 255, 255, 0.05);
@@ -192,7 +326,10 @@ img {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-white);
   border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.015);
+}
+.btn-secondary:active {
+  transform: translate(var(--mx, 0), var(--my, 0)) translateY(-1px) scale(0.98);
 }
 .btn-glow:hover {
   animation: pulse-glow 2s infinite;
@@ -244,11 +381,34 @@ img {
   width: 100%;
   z-index: 100;
   padding: 16px 0;
+  background: rgba(7, 9, 14, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid transparent;
+  transition: background var(--transition-slow), backdrop-filter var(--transition-slow), border-color var(--transition-slow), padding var(--transition-normal), box-shadow var(--transition-slow);
+}
+.navbar-header.is-scrolled {
   background: rgba(7, 9, 14, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-glass);
-  transition: var(--transition-normal);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--border-glass);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  padding: 12px 0;
+}
+.navbar-progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+}
+.navbar-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--purple) 50%, var(--pink) 100%);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+  transition: width 0.1s linear;
 }
 .navbar-container {
   display: flex;
@@ -286,8 +446,24 @@ img {
   padding: 6px 0;
   position: relative;
 }
-.nav-link:hover, .nav-link.active {
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--primary), var(--purple));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-premium);
+}
+.nav-link:not(.nav-cta):hover, .nav-link:not(.nav-cta).active {
   color: var(--text-primary);
+}
+.nav-link:not(.nav-cta):hover::after,
+.nav-link:not(.nav-cta).active::after {
+  transform: scaleX(1);
 }
 .nav-cta {
   background: linear-gradient(135deg, var(--primary) 0%, var(--purple) 100%);
@@ -336,6 +512,7 @@ section {
 .hero-section {
   padding: 160px 0 100px 0;
   overflow: hidden;
+  position: relative;
 }
 .hero-container {
   display: grid;
@@ -383,17 +560,48 @@ section {
   letter-spacing: 1px;
 }
 
+/* Hero particles canvas: ambient floating motes behind the hero content */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -5;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 /* Hero Preview (Glassmorphic Mockup) */
 .hero-preview {
   position: relative;
   display: flex;
   justify-content: center;
+  perspective: 1400px;
 }
 .preview-card {
   width: 100%;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   animation: float-panel 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow var(--transition-slow);
+}
+.preview-card:hover {
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), var(--shadow-glow-purple);
+}
+/* Glass reflection sweep across the mockup on hover */
+.preview-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.14) 45%, rgba(255, 255, 255, 0.02) 55%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.9s var(--ease-premium);
+}
+.preview-card:hover .preview-glare {
+  transform: translateX(120%);
 }
 .preview-header {
   background: rgba(12, 15, 23, 0.6);
@@ -545,18 +753,43 @@ section {
 
 .apps-tab-panels {
   min-height: 400px;
+  position: relative;
 }
 .tab-panel {
   display: none;
-  animation: panel-fade-in 0.4s ease forwards;
 }
 .tab-panel.active {
   display: block;
+}
+.tab-panel.panel-anim {
+  animation: panel-enter 0.55s var(--ease-premium) forwards;
+}
+.tab-panel.panel-exit {
+  animation: panel-exit-anim 0.28s var(--ease-premium) forwards;
 }
 
 @keyframes panel-fade-in {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes panel-enter {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes panel-exit-anim {
+  from { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  to { opacity: 0; transform: translateY(-10px) scale(0.985); filter: blur(6px); }
+}
+
+/* Tab buttons: subtle lift + glow on hover for a livelier feel */
+.tab-btn {
+  will-change: transform;
+}
+.tab-btn:hover {
+  transform: translateX(3px);
+}
+.tab-btn.active {
+  transform: translateX(0);
 }
 
 .panel-grid {
@@ -621,12 +854,32 @@ section {
   box-shadow: var(--shadow-glass);
   border: 1px solid var(--border-glass);
   cursor: pointer;
+  perspective: 1000px;
+  transition: box-shadow var(--transition-slow), border-color var(--transition-slow);
+  will-change: transform;
+}
+.panel-media:hover {
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(139, 92, 246, 0.25);
 }
 .app-screenshot {
   width: 100%;
   display: block;
   object-fit: cover;
   transition: transform var(--transition-slow);
+}
+/* Reflective diagonal sheen sweeping across the screenshot on hover */
+.panel-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 25%, rgba(255, 255, 255, 0.16) 45%, rgba(255, 255, 255, 0.02) 55%, transparent 75%);
+  transform: translateX(-130%);
+  transition: transform 0.85s var(--ease-premium);
+}
+.panel-media:hover::after {
+  transform: translateX(130%);
 }
 .media-overlay {
   position: absolute;
@@ -663,6 +916,7 @@ section {
   max-width: 900px;
   margin: 0 auto;
   position: relative;
+  perspective: 1600px;
 }
 .slider-wrapper {
   display: flex;
@@ -673,9 +927,19 @@ section {
 .slide {
   flex: 0 0 100%;
   width: 100%;
-  transition: transform var(--transition-slow);
+  transition: transform var(--transition-slow), opacity var(--transition-slow), filter var(--transition-slow);
   position: relative;
   padding: 10px;
+  transform-style: preserve-3d;
+}
+/* Coverflow-style depth: the slide out of focus recedes slightly (scale/position handled inline via JS to stay compatible with the strip-translate mechanism) */
+.slide:not(.slide-current) {
+  opacity: 0.55;
+  filter: saturate(0.7) brightness(0.85);
+}
+.slide.slide-current {
+  opacity: 1;
+  filter: none;
 }
 .slide img {
   width: 100%;
@@ -683,10 +947,12 @@ section {
   display: block;
   cursor: pointer;
   border: 1px solid var(--border-glass);
-  transition: opacity var(--transition-fast);
+  transition: transform 0.6s var(--ease-premium), opacity var(--transition-fast), box-shadow var(--transition-slow);
 }
 .slide img:hover {
-  opacity: 0.9;
+  opacity: 0.96;
+  transform: scale(1.015);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
 }
 .slide-label {
   position: absolute;
@@ -760,6 +1026,12 @@ section {
   padding: 40px 30px;
   display: flex;
   flex-direction: column;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+.req-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 .req-type {
   font-family: var(--font-heading);
@@ -1177,6 +1449,73 @@ section {
 }
 
 /* ==========================================================================
+   v2.0 Motion & Interaction Systems
+   Scroll reveals, 3D tilt, magnetic buttons, ambient depth — layered on top
+   of the original v1.0 visual language without altering its identity.
+   ========================================================================== */
+
+/* Scroll-triggered reveal: fade + rise + soft blur-in, staggered via delay classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium), filter 0.9s var(--ease-premium);
+  will-change: opacity, transform, filter;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+/* Cards that receive JS-driven pointer tilt (about, requirements, screenshots) */
+.tilt-card, .tilt-media {
+  transition: transform 0.5s var(--ease-premium), box-shadow var(--transition-slow), border-color var(--transition-slow);
+}
+.tilt-card.is-tilting, .tilt-media.is-tilting {
+  transition: box-shadow var(--transition-slow), border-color var(--transition-slow);
+}
+
+/* Magnetic buttons: JS sets --mx/--my translate offsets while tracking pointer */
+.btn {
+  transform: translate(var(--mx, 0), var(--my, 0));
+}
+.btn.is-magnetic-active {
+  transition: box-shadow var(--transition-normal), background var(--transition-normal), border-color var(--transition-normal);
+}
+.btn-primary:hover {
+  transform: translate(var(--mx, 0), var(--my, 0)) translateY(-2px) scale(1.015);
+}
+.btn-secondary:hover {
+  transform: translate(var(--mx, 0), var(--my, 0)) translateY(-2px) scale(1.015);
+}
+
+/* Respect users who prefer reduced motion: strip ambient/decorative animation,
+   keep state-based transitions (e.g. tab switching, hover feedback) instant-ish */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .hero-particles,
+  .noise-overlay,
+  .glow-bg-1, .glow-bg-2, .glow-bg-3 {
+    display: none;
+  }
+}
+
+/* ==========================================================================
    Responsive Media Queries (Mobile First approach overrides)
    ========================================================================== */
 
@@ -1320,3 +1659,62 @@ section {
   }
 }
 
+/* ===========================
+   INSTALL GUIDE
+=========================== */
+
+.guide-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+}
+
+.step-card {
+    position: relative;
+    flex: 0 0 calc(25% - 18px);
+    max-width: calc(25% - 18px);
+
+    background: rgba(255,255,255,.02);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-md);
+    padding: 32px 24px;
+    text-align: center;
+    transition: var(--transition-normal);
+}
+
+.step-card:hover{
+    transform: translateY(-8px);
+}
+
+.step-num{
+    position:absolute;
+    top:-16px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 1200px){
+    .step-card{
+        flex:0 0 calc(33.333% - 16px);
+        max-width:calc(33.333% - 16px);
+    }
+}
+
+@media (max-width: 992px){
+    .step-card{
+        flex:0 0 calc(50% - 12px);
+        max-width:calc(50% - 12px);
+    }
+}
+
+@media (max-width: 576px){
+    .step-card{
+        flex:0 0 100%;
+        max-width:100%;
+    }
+}
