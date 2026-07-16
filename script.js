@@ -8,7 +8,52 @@ document.addEventListener("DOMContentLoaded", () => {
   initCompatibilityChecker();
   initDownloadProgress();
   initLightbox();
+  initSmoothScroll();
 });
+
+// Smooth Scroll & Clean URL Hashes
+function initSmoothScroll() {
+  // Clear hash on page load if present
+  if (window.location.hash) {
+    const targetHash = window.location.hash;
+    // Remove hash from URL without triggering reload
+    history.replaceState("", document.title, window.location.pathname + window.location.search);
+    
+    // Smooth scroll to the target section on load
+    const targetEl = document.querySelector(targetHash);
+    if (targetEl) {
+      setTimeout(() => {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    }
+  }
+
+  // Intercept all anchor link clicks pointing to page sections
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    const href = anchor.getAttribute("href");
+    
+    // Smooth scroll for id targets (length > 1)
+    if (href && href.startsWith("#") && href.length > 1) {
+      const targetEl = document.querySelector(href);
+      if (targetEl) {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: "smooth" });
+        });
+      }
+    }
+    // Smooth scroll for home / top
+    else if (href === "#") {
+      anchor.addEventListener("click", function (e) {
+        if (this.classList.contains("nav-link")) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    }
+  });
+}
+
 
 // Mobile Responsive Navigation Toggle
 function initMobileNav() {
