@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IMAA-OS: Sistem Operasi multimedia berbasis Ubuntu 24.04 LTS yang dirancang khusus untuk studio audio, desain grafis, video editing, dan ilustrasi digital.">
+  <title>IMAA-OS - Sistem Operasi Studio Multimedia Profesional</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Background Glows -->
+  <div class="glow-bg-1"></div>
+  <div class="glow-bg-2"></div>
+
+  <!-- Header & Navigation -->
+  <header class="navbar-header">
+    <div class="container navbar-container">
+      <a href="#" class="navbar-brand">
+        <img src="assets/media/logo.svg" alt="IMAA-OS Logo" class="navbar-logo">
+        <span class="brand-text">IMAA-<span>OS</span></span>
+      </a>
+      <nav class="navbar-nav" id="js-nav-menu">
+        <a href="#" class="nav-link active">Beranda</a>
+        <a href="#about" class="nav-link">Tentang</a>
+        <a href="#apps" class="nav-link">Aplikasi Studio</a>
+        <a href="#gallery" class="nav-link">Galeri</a>
+        <a href="#requirements" class="nav-link">Spesifikasi</a>
+        <a href="#download" class="nav-link nav-cta">Download</a>
+      </nav>
+      <button class="nav-toggle" id="js-nav-toggle" aria-label="Toggle Menu">
+        <i data-lucide="menu" class="icon-menu"></i>
+        <i data-lucide="x" class="icon-close"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            <span>Berbasis Ubuntu 24.04 LTS</span>
+          </div>
+          <h1 class="hero-title">Studio Kreatif Anda, <br><span class="gradient-text">Dalam Satu Sistem Operasi</span></h1>
+          <p class="hero-subtitle">IMAA-OS mengintegrasikan perangkat lunak multimedia profesional siap pakai untuk audio, video, 2D art, dan perkantoran dalam satu distribusi Linux yang cepat, stabil, dan modern.</p>
+          <div class="hero-actions">
+            <a href="#download" class="btn btn-primary btn-glow">
+              <i data-lucide="download"></i> Download Sekarang
+            </a>
+            <a href="#apps" class="btn btn-secondary">
+              <i data-lucide="play-circle"></i> Jelajahi Fitur
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">24.04</span>
+              <span class="stat-label">LTS Base</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">Ready</span>
+              <span class="stat-label">Multimedia Apps</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">Free</span>
+              <span class="stat-label">Open Source</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-preview">
+          <div class="glass-card preview-card">
+            <div class="preview-header">
+              <div class="preview-dots">
+                <span class="dot-red"></span>
+                <span class="dot-yellow"></span>
+                <span class="dot-green"></span>
+              </div>
+              <div class="preview-title">IMAA-OS Desktop</div>
+            </div>
+            <div class="preview-body">
+              <img src="assets/media/image2.png" alt="IMAA-OS Wallpaper & Desktop" class="desktop-mockup">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Mengapa Memilih <span class="gradient-text">IMAA-OS</span>?</h2>
+          <p class="section-subtitle">Dibuat khusus untuk menghilangkan hambatan instalasi dan konfigurasi software multimedia di Linux.</p>
+        </div>
+        
+        <div class="about-grid">
+          <div class="glass-card about-card">
+            <div class="card-icon-wrapper purple-glow">
+              <i data-lucide="zap"></i>
+            </div>
+            <h3>Siap Pakai (Out-of-the-Box)</h3>
+            <p>Tidak perlu lagi menghabiskan waktu berjam-jam menginstal library audio, codec video, dan software kreatif. Burn ISO, instal, dan langsung mulai berkarya.</p>
+          </div>
+          
+          <div class="glass-card about-card">
+            <div class="card-icon-wrapper blue-glow">
+              <i data-lucide="shield"></i>
+            </div>
+            <h3>Stabilitas Ubuntu 24.04 LTS</h3>
+            <p>Ditenagai oleh basis sistem operasi kelas dunia yang menawarkan dukungan jangka panjang, keamanan tingkat tinggi, dan kompatibilitas hardware yang luas.</p>
+          </div>
+          
+          <div class="glass-card about-card">
+            <div class="card-icon-wrapper pink-glow">
+              <i data-lucide="cpu"></i>
+            </div>
+            <h3>Performa Teroptimasi</h3>
+            <p>Konfigurasi sistem yang disesuaikan untuk mengalokasikan sumber daya CPU dan RAM secara maksimal pada aplikasi kreatif yang sedang aktif.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Showcase (Multimedia Apps) -->
+    <section id="apps" class="apps-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Aplikasi Studio <span class="gradient-text">Pre-Installed</span></h2>
+          <p class="section-subtitle">Kami menyertakan perkakas multimedia terbaik di dunia open source untuk segala kebutuhan kreatif Anda.</p>
+        </div>
+
+        <div class="apps-tabs-container">
+          <!-- Tab Navigation -->
+          <div class="apps-tabs-nav" id="js-apps-tabs">
+            <button class="tab-btn active" data-app="audacity">
+              <i data-lucide="music"></i> Audacity
+            </button>
+            <button class="tab-btn" data-app="gimp">
+              <i data-lucide="image"></i> GIMP
+            </button>
+            <button class="tab-btn" data-app="kdenlive">
+              <i data-lucide="video"></i> Kdenlive
+            </button>
+            <button class="tab-btn" data-app="krita">
+              <i data-lucide="palette"></i> Krita
+            </button>
+            <button class="tab-btn" data-app="libreoffice">
+              <i data-lucide="file-text"></i> LibreOffice
+            </button>
+            <button class="tab-btn" data-app="vlc">
+              <i data-lucide="play"></i> VLC Player
+            </button>
+          </div>
+
+          <!-- Tab Content Panels -->
+          <div class="apps-tab-panels" id="js-apps-panels">
+            <!-- Audacity -->
+            <div class="tab-panel active" id="panel-audacity">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="app-tag tag-audio">Audio Studio</div>
+                  <h3>Audacity</h3>
+                  <p class="app-desc">Perekam dan editor audio multi-track yang canggih. Cocok untuk rekaman podcast, editing musik, efek suara (Foley), pembersihan noise, dan mastering audio dengan berbagai format plugin terpopuler.</p>
+                  <ul class="app-features">
+                    <li><i data-lucide="check-circle-2"></i> Rekaman audio live kualitas tinggi</li>
+                    <li><i data-lucide="check-circle-2"></i> Pembersihan derau/noise secara instan</li>
+                    <li><i data-lucide="check-circle-2"></i> Dukungan plugin VST, LV2, dan LADSPA</li>
+                  </ul>
+                </div>
+                <div class="panel-media" onclick="openLightbox('assets/media/image3.png', 'Audacity di IMAA-OS')">
+                  <div class="media-overlay">
+                    <i data-lucide="maximize-2"></i>
+                    <span>Klik untuk memperbesar</span>
+                  </div>
+                  <img src="assets/media/image3.png" alt="Audacity Interface" class="app-screenshot">
+                </div>
+              </div>
+            </div>
+
+            <!-- GIMP -->
+            <div class="tab-panel" id="panel-gimp">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="app-tag tag-design">Desain Grafis</div>
+                  <h3>GIMP</h3>
+                  <p class="app-desc">Perkakas manipulasi gambar GNU (GIMP) adalah software professional untuk pengeditan foto, retouching, kolase, digital painting bebas, serta ekspor file ke berbagai format industri grafis.</p>
+                  <ul class="app-features">
+                    <li><i data-lucide="check-circle-2"></i> Pengeditan berbasis layer dan channel</li>
+                    <li><i data-lucide="check-circle-2"></i> Kuas lukis yang sepenuhnya dapat dikustomisasi</li>
+                    <li><i data-lucide="check-circle-2"></i> Fitur restorasi dan pembersih objek foto</li>
+                  </ul>
+                </div>
+                <div class="panel-media" onclick="openLightbox('assets/media/image4.png', 'GIMP di IMAA-OS')">
+                  <div class="media-overlay">
+                    <i data-lucide="maximize-2"></i>
+                    <span>Klik untuk memperbesar</span>
+                  </div>
+                  <img src="assets/media/image4.png" alt="GIMP Interface" class="app-screenshot">
+                </div>
+              </div>
+            </div>
+
+            <!-- Kdenlive -->
+            <div class="tab-panel" id="panel-kdenlive">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="app-tag tag-video">Video Editor</div>
+                  <h3>Kdenlive</h3>
+                  <p class="app-desc">Editor video non-linear yang sangat andal. Dirancang untuk menangani pengeditan video multi-track dasar hingga tingkat lanjut dengan transisi kreatif, efek visual, grading warna, serta pembuatan teks (titling).</p>
+                  <ul class="app-features">
+                    <li><i data-lucide="check-circle-2"></i> Multi-track video and audio timeline editing</li>
+                    <li><i data-lucide="check-circle-2"></i> Efek video & transisi real-time yang luas</li>
+                    <li><i data-lucide="check-circle-2"></i> Rendering cepat dengan akselerasi GPU</li>
+                  </ul>
+                </div>
+                <div class="panel-media" onclick="openLightbox('assets/media/image5.png', 'Kdenlive di IMAA-OS')">
+                  <div class="media-overlay">
+                    <i data-lucide="maximize-2"></i>
+                    <span>Klik untuk memperbesar</span>
+                  </div>
+                  <img src="assets/media/image5.png" alt="Kdenlive Interface" class="app-screenshot">
+                </div>
+              </div>
+            </div>
+
+            <!-- Krita -->
+            <div class="tab-panel" id="panel-krita">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="app-tag tag-art">Ilustrasi & Painting</div>
+                  <h3>Krita</h3>
+                  <p class="app-desc">Software melukis digital gratis dan open source untuk seniman konsep, ilustrator, pembuat matte paint, desainer tekstur, dan animator 2D. Dilengkapi dengan stabilisator kuas terbaik di kelasnya.</p>
+                  <ul class="app-features">
+                    <li><i data-lucide="check-circle-2"></i> Brush engine yang luar biasa realistis</li>
+                    <li><i data-lucide="check-circle-2"></i> Stabilizer kuas untuk goresan tangan yang mulus</li>
+                    <li><i data-lucide="check-circle-2"></i> Timeline animasi 2D frame-by-frame bawaan</li>
+                  </ul>
+                </div>
+                <div class="panel-media" onclick="openLightbox('assets/media/image6.png', 'Krita di IMAA-OS')">
+                  <div class="media-overlay">
+                    <i data-lucide="maximize-2"></i>
+                    <span>Klik untuk memperbesar</span>
+                  </div>
+                  <img src="assets/media/image6.png" alt="Krita Interface" class="app-screenshot">
+                </div>
+              </div>
+            </div>
+
+            <!-- LibreOffice -->
+            <div class="tab-panel" id="panel-libreoffice">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="app-tag tag-office">Perkantoran</div>
+                  <h3>LibreOffice</h3>
+                  <p class="app-desc">Suite perkantoran profesional yang lengkap dan tangguh untuk menulis dokumen (Writer), membuat spreadsheet data (Calc), mendesain slide presentasi (Impress), dan mengelola database.</p>
+                  <ul class="app-features">
+                    <li><i data-lucide="check-circle-2"></i> Kompatibilitas tinggi dengan Microsoft Office</li>
+                    <li><i data-lucide="check-circle-2"></i> Ekspor PDF secara instan dan aman</li>
+                    <li><i data-lucide="check-circle-2"></i> Tanpa biaya lisensi atau langganan bulanan</li>
+                  </ul>
+                </div>
+                <div class="panel-media" onclick="openLightbox('assets/media/image7.png', 'LibreOffice di IMAA-OS')">
+                  <div class="media-overlay">
+                    <i data-lucide="maximize-2"></i>
+                    <span>Klik untuk memperbesar</span>
+                  </div>
+                  <img src="assets/media/image7.png" alt="LibreOffice Interface" class="app-screenshot">
+                </div>
+              </div>
+            </div>
+
+            <!-- VLC -->
+            <div class="tab-panel" id="panel-vlc">
+              <div class="panel-grid">
+                <div class="panel-info">
+                  <div class="app-tag tag-vlc">Media Player</div>
+                  <h3>VLC Media Player</h3>
+                  <p class="app-desc">Pemutar media lintas platform legendaris. Memutar hampir semua file multimedia, disc, webcam, device, serta streaming internet tanpa perlu menginstal paket codec tambahan.</p>
+                  <ul class="app-features">
+                    <li><i data-lucide="check-circle-2"></i> Memutar semua format audio dan video (MKV, MP4, MP3, etc.)</li>
+                    <li><i data-lucide="check-circle-2"></i> Konsumsi RAM dan CPU yang sangat ringan</li>
+                    <li><i data-lucide="check-circle-2"></i> Kontrol audio, equalizer, dan subtitle dinamis</li>
+                  </ul>
+                </div>
+                <div class="panel-media" onclick="openLightbox('assets/media/image8.png', 'VLC Media Player di IMAA-OS')">
+                  <div class="media-overlay">
+                    <i data-lucide="maximize-2"></i>
+                    <span>Klik untuk memperbesar</span>
+                  </div>
+                  <img src="assets/media/image8.png" alt="VLC Player Interface" class="app-screenshot">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Tour Section -->
+    <section id="gallery" class="gallery-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Jelajahi <span class="gradient-text">IMAA-OS</span></h2>
+          <p class="section-subtitle">Tampilan visual pertama saat menyalakan sistem dan desain workspace kreatif Anda.</p>
+        </div>
+
+        <div class="gallery-slider">
+          <div class="slider-wrapper" id="js-slider-wrapper">
+            <div class="slide glass-card">
+              <div class="slide-label">Boot Logo System</div>
+              <img src="assets/media/image1.png" alt="IMAA-OS Boot Logo" onclick="openLightbox('assets/media/image1.png', 'IMAA-OS Boot Logo')">
+            </div>
+            <div class="slide glass-card">
+              <div class="slide-label">Sleek Wallpaper & Desktop Environment</div>
+              <img src="assets/media/image2.png" alt="IMAA-OS Wallpaper" onclick="openLightbox('assets/media/image2.png', 'IMAA-OS Wallpaper')">
+            </div>
+          </div>
+          <!-- Slider Navigation -->
+          <div class="slider-controls">
+            <button class="slider-btn prev-btn" id="js-slider-prev"><i data-lucide="chevron-left"></i></button>
+            <div class="slider-dots" id="js-slider-dots"></div>
+            <button class="slider-btn next-btn" id="js-slider-next"><i data-lucide="chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Requirements & Compatibility Section -->
+    <section id="requirements" class="requirements-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title">Spesifikasi <span class="gradient-text">Sistem</span></h2>
+          <p class="section-subtitle">Pastikan komputer Anda memenuhi syarat untuk menjalankan IMAA-OS dengan performa terbaik.</p>
+        </div>
+
+        <div class="requirements-grid">
+          <!-- Min specs -->
+          <div class="glass-card req-card">
+            <div class="req-type">Spesifikasi Minimum</div>
+            <ul class="req-list">
+              <li>
+                <div class="req-icon"><i data-lucide="cpu"></i></div>
+                <div>
+                  <strong>Prosesor</strong>
+                  <span>Intel / AMD Dual Core (2.0 GHz)</span>
+                </div>
+              </li>
+              <li>
+                <div class="req-icon"><i data-lucide="database"></i></div>
+                <div>
+                  <strong>RAM (Memori)</strong>
+                  <span>4 GB RAM DDR3 / DDR4</span>
+                </div>
+              </li>
+              <li>
+                <div class="req-icon"><i data-lucide="hard-drive"></i></div>
+                <div>
+                  <strong>Penyimpanan</strong>
+                  <span>25 GB Ruang Kosong (HDD/SSD)</span>
+                </div>
+              </li>
+              <li>
+                <div class="req-icon"><i data-lucide="monitor"></i></div>
+                <div>
+                  <strong>Display</strong>
+                  <span>Resolusi 1024 x 768 px</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Rec specs -->
+          <div class="glass-card req-card active-border">
+            <div class="req-type badge-recommended">Spesifikasi Direkomendasikan</div>
+            <ul class="req-list">
+              <li>
+                <div class="req-icon text-purple"><i data-lucide="cpu"></i></div>
+                <div>
+                  <strong>Prosesor</strong>
+                  <span>Intel Core i5 / Ryzen 5 atau lebih cepat</span>
+                </div>
+              </li>
+              <li>
+                <div class="req-icon text-purple"><i data-lucide="database"></i></div>
+                <div>
+                  <strong>RAM (Memori)</strong>
+                  <span>8 GB RAM (DDR4) atau lebih tinggi</span>
+                </div>
+              </li>
+              <li>
+                <div class="req-icon text-purple"><i data-lucide="hard-drive"></i></div>
+                <div>
+                  <strong>Penyimpanan</strong>
+                  <span>50 GB Ruang Kosong (SATA/NVMe SSD)</span>
+                </div>
+              </li>
+              <li>
+                <div class="req-icon text-purple"><i data-lucide="monitor"></i></div>
+                <div>
+                  <strong>Display</strong>
+                  <span>Resolusi Full HD (1920 x 1080) & Dual Monitor</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Compatibility Checker Form -->
+          <div class="glass-card req-card checker-card">
+            <div class="req-type">Cek Kompatibilitas PC Anda</div>
+            <p class="checker-intro">Masukkan spek perangkat keras Anda saat ini untuk melihat kecocokannya dengan IMAA-OS.</p>
+            <form id="js-checker-form" class="checker-form">
+              <div class="form-group">
+                <label for="cpu-cores">Jumlah Core CPU</label>
+                <select id="cpu-cores" required>
+                  <option value="1">1 Core (Single Core)</option>
+                  <option value="2" selected>2 Cores (Dual Core)</option>
+                  <option value="4">4 Cores (Quad Core)</option>
+                  <option value="6">6 Cores (Hexa Core)</option>
+                  <option value="8">8 Cores atau lebih</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ram-size">Kapasitas RAM</label>
+                  <select id="ram-size" required>
+                    <option value="2">2 GB</option>
+                    <option value="4" selected>4 GB</option>
+                    <option value="8">8 GB</option>
+                    <option value="16">16 GB</option>
+                    <option value="32">32 GB atau lebih</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="storage-type">Tipe Storage</label>
+                  <select id="storage-type" required>
+                    <option value="hdd">HDD Biasa</option>
+                    <option value="ssd" selected>SSD (SATA/NVMe)</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-secondary w-full">Cek Sekarang</button>
+            </form>
+            
+            <div class="checker-result hidden" id="js-checker-result">
+              <div class="result-divider"></div>
+              <div class="result-status-wrapper">
+                <div class="result-icon-badge" id="js-result-badge">
+                  <i data-lucide="check"></i>
+                </div>
+                <div>
+                  <h4 class="result-title" id="js-result-title">Sangat Cocok!</h4>
+                  <p class="result-desc" id="js-result-desc">PC Anda siap menjalankan IMAA-OS dengan performa penuh.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download-section">
+      <div class="container text-center">
+        <div class="download-box glass-card">
+          <div class="download-badge">Rilis Terbaru v1.0 LTS</div>
+          <h2 class="download-heading">Unduh <span class="gradient-text">IMAA-OS 1.0</span></h2>
+          <p class="download-subtext">Dapatkan berkas ISO resmi secara gratis dan mulailah perjalanan kreasi Anda dengan software siap pakai.</p>
+          
+          <div class="download-actions-grid">
+            <a href="#" class="btn btn-primary btn-lg btn-glow" id="js-download-btn">
+              <i data-lucide="download"></i> Download ISO Resmi (6.4 GB)
+            </a>
+          </div>
+
+          <!-- Download Modal/Spinner Feedback -->
+          <div id="js-download-progress-box" class="download-progress-box hidden">
+            <div class="progress-details">
+              <span>Menyiapkan Berkas Unduhan...</span>
+              <span id="js-progress-percent">0%</span>
+            </div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="js-progress-bar"></div>
+            </div>
+            <p class="progress-note">Terima kasih telah memilih IMAA-OS! File akan terunduh otomatis.</p>
+          </div>
+
+          <div class="checksum-info">
+            <span><strong>SHA-256 Checksum:</strong> e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+          </div>
+        </div>
+
+        <!-- Installation Instructions -->
+        <div class="install-guide">
+          <h3 class="guide-title">Cara Membuat Bootable USB</h3>
+          <div class="guide-steps">
+            <div class="step-card">
+              <span class="step-num">1</span>
+              <h4>Persiapan USB</h4>
+              <p>Siapkan Flashdisk kosong dengan kapasitas minimal 8 GB.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-num">2</span>
+              <h4>Unduh Flasher</h4>
+              <p>Unduh software pembuat bootable drive seperti <strong>Rufus</strong> (Windows) atau <strong>BalenaEtcher</strong> (Mac/Linux).</p>
+            </div>
+            <div class="step-card">
+              <span class="step-num">3</span>
+              <h4>Flash ISO</h4>
+              <p>Buka flasher, pilih file ISO IMAA-OS, pilih drive Flashdisk Anda, lalu tekan <strong>Flash / Start</strong>.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-num">4</span>
+              <h4>Boot & Install</h4>
+              <p>Restart PC Anda, masuk ke Boot Menu (F12/F11/Esc), pilih USB Flashdisk Anda, dan mulailah proses instalasi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal for Screenshots -->
+  <div class="lightbox-modal" id="js-lightbox">
+    <button class="lightbox-close" id="js-lightbox-close" aria-label="Close Lightbox">
+      <i data-lucide="x"></i>
+    </button>
+    <div class="lightbox-content">
+      <img src="" alt="Screenshot" id="js-lightbox-img">
+      <div class="lightbox-caption" id="js-lightbox-caption">Screenshot Caption</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand-side">
+        <a href="#" class="footer-brand">
+          <img src="assets/media/logo.svg" alt="IMAA-OS Logo" class="footer-logo">
+          <span>IMAA-OS</span>
+        </a>
+        <p class="footer-about">Distribusi Linux modern untuk studio audio, desain grafis, editing video, dan produktivitas kreatif. Didukung oleh kestabilan Ubuntu LTS.</p>
+      </div>
+      <div class="footer-links-side">
+        <div class="link-group">
+          <h4>Sistem</h4>
+          <a href="#about">Tentang OS</a>
+          <a href="#requirements">Spesifikasi PC</a>
+          <a href="#download">Unduh ISO</a>
+        </div>
+        <div class="link-group">
+          <h4>Komunitas & Pendukung</h4>
+          <a href="https://ubuntu.com" target="_blank" rel="noopener">Ubuntu Linux</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub Project</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>&copy; 2026 IMAA-OS. Seluruh Hak Cipta Dilindungi.</p>
+        <p class="ubuntu-attribution">Ubuntu adalah merek dagang terdaftar dari Canonical Ltd. Situs ini adalah proyek independen dan tidak berafiliasi dengan Canonical.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
