@@ -45,12 +45,17 @@ function initSmoothScroll() {
     // Smooth scroll for home / top
     else if (href === "#") {
       anchor.addEventListener("click", function (e) {
-        if (this.classList.contains("nav-link")) {
+        if (
+          this.classList.contains("nav-link") ||
+          this.classList.contains("navbar-brand") ||
+          this.classList.contains("footer-brand")
+        ) {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
       });
     }
+
   });
 }
 
