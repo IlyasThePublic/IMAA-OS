@@ -149,57 +149,75 @@ function initCompatibilityChecker() {
   const badge = document.getElementById("js-result-badge");
   const title = document.getElementById("js-result-title");
   const desc = document.getElementById("js-result-desc");
+  const submitBtn = document.getElementById("js-checker-submit");
 
-  if (form) {
+  if (form && submitBtn) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
+      // Hide previous result if visible
+      resultDiv.classList.add("hidden");
+
+      // Save original button content and disable it
+      const originalHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i data-lucide="loader-2" class="spin"></i> Memproses...';
+      lucide.createIcons();
 
       const cpu = parseInt(document.getElementById("cpu-cores").value);
       const ram = parseInt(document.getElementById("ram-size").value);
       const storage = document.getElementById("storage-type").value;
 
-      // Show result panel
-      resultDiv.classList.remove("hidden");
+      // Simulate a loading delay of 1.2 seconds for realistic feedback
+      setTimeout(() => {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalHTML;
+        lucide.createIcons();
 
-      // Reset badge classes
-      badge.className = "result-icon-badge";
+        // Show result panel
+        resultDiv.classList.remove("hidden");
 
-      // Compatibility Algorithm
-      if (ram < 4 || cpu < 2) {
-        // Under minimum spec
-        badge.classList.add("danger");
-        badge.innerHTML = '<i data-lucide="x-circle"></i>';
-        title.textContent = "Tidak Memenuhi Syarat";
-        title.className = "result-title text-red";
-        desc.textContent =
-          "Komputer Anda di bawah spesifikasi minimum. IMAA-OS membutuhkan minimal CPU Dual Core dan 4 GB RAM agar dapat berjalan.";
-      } else if (cpu >= 4 && ram >= 8 && storage === "ssd") {
-        // Recommended spec (Excellent)
-        badge.classList.add("success");
-        badge.innerHTML = '<i data-lucide="check-circle-2"></i>';
-        title.textContent = "Sangat Cocok!";
-        title.className = "result-title text-emerald";
-        desc.textContent =
-          "Spesifikasi PC Anda sangat baik! IMAA-OS akan berjalan dengan performa maksimal untuk produksi audio multi-track dan rendering video.";
-      } else if (storage === "hdd") {
-        // HDD Warning
-        badge.classList.add("warning");
-        badge.innerHTML = '<i data-lucide="alert-triangle"></i>';
-        title.textContent = "Kompatibilitas Terbatas";
-        title.className = "result-title text-purple";
-        desc.textContent =
-          "PC Anda memenuhi syarat dasar, tetapi penggunaan HDD (Penyimpanan Magnetik) akan memperlambat loading aplikasi dan render video. Disarankan upgrade ke SSD.";
-      } else {
-        // Meets minimum spec
-        badge.classList.add("success");
-        badge.innerHTML = '<i data-lucide="check"></i>';
-        title.textContent = "Kompatibel Dasar";
-        title.className = "result-title text-purple";
-        desc.textContent =
-          "Perangkat Anda siap menjalankan IMAA-OS untuk kebutuhan kreatif standar. Multitasking berat mungkin sedikit membatasi performa.";
-      }
+        // Reset badge classes
+        badge.className = "result-icon-badge";
 
-      lucide.createIcons();
+        // Compatibility Algorithm
+        if (ram < 4 || cpu < 2) {
+          // Under minimum spec
+          badge.classList.add("danger");
+          badge.innerHTML = '<i data-lucide="x-circle"></i>';
+          title.textContent = "Tidak Memenuhi Syarat";
+          title.className = "result-title text-red";
+          desc.textContent =
+            "Komputer Anda di bawah spesifikasi minimum. IMAA-OS membutuhkan minimal CPU Dual Core dan 4 GB RAM agar dapat berjalan.";
+        } else if (cpu >= 4 && ram >= 8 && storage === "ssd") {
+          // Recommended spec (Excellent)
+          badge.classList.add("success");
+          badge.innerHTML = '<i data-lucide="check-circle-2"></i>';
+          title.textContent = "Sangat Cocok!";
+          title.className = "result-title text-emerald";
+          desc.textContent =
+            "Spesifikasi PC Anda sangat baik! IMAA-OS akan berjalan dengan performa maksimal untuk produksi audio multi-track dan rendering video.";
+        } else if (storage === "hdd") {
+          // HDD Warning
+          badge.classList.add("warning");
+          badge.innerHTML = '<i data-lucide="alert-triangle"></i>';
+          title.textContent = "Kompatibilitas Terbatas";
+          title.className = "result-title text-purple";
+          desc.textContent =
+            "PC Anda memenuhi syarat dasar, tetapi penggunaan HDD (Penyimpanan Magnetik) akan memperlambat loading aplikasi dan render video. Disarankan upgrade ke SSD.";
+        } else {
+          // Meets minimum spec
+          badge.classList.add("success");
+          badge.innerHTML = '<i data-lucide="check"></i>';
+          title.textContent = "Kompatibel Dasar";
+          title.className = "result-title text-purple";
+          desc.textContent =
+            "Perangkat Anda siap menjalankan IMAA-OS untuk kebutuhan kreatif standar. Multitasking berat mungkin sedikit membatasi performa.";
+        }
+
+        lucide.createIcons();
+      }, 1200);
     });
   }
 }
